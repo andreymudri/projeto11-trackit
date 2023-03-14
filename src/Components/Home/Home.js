@@ -2,14 +2,15 @@ import homeIcon from '../../Assets/homeIcon.png';
 import {HomeStyle, Button, Input, Form, Registrar} from './HomeStyle';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
+import {UserContext} from '../context'
 export default function Home() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')    
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState('');
+    const [loading, setLoading] = useState(false);
+    const { setUser } = useContext(UserContext);
     function signIn(e) {
         e.preventDefault();
 
@@ -23,7 +24,7 @@ export default function Home() {
         const promise = axios.post(URL, body)
         promise.then(response => {
             setUser(response.data);
-            console.log(user);
+            console.log(setUser);
             navigate("/hoje");
             setLoading(false);
         })
@@ -55,7 +56,7 @@ export default function Home() {
                 disabled={loading}
                 data-test="password-input"
         />
-            <Button disabled={loading} >{!loading ? <>Entrar</> : <ThreeDots 
+            <Button disabled={loading} data-test="login-btn">{!loading ? <>Entrar</> : <ThreeDots 
                 height="13" 
                 width="51" 
                 radius="9"
@@ -64,7 +65,7 @@ export default function Home() {
                 wrapperStyle={{}}
                 wrapperClassName=""
                 visible={true}
-                data-test="login-btn"
+                
  />}</Button>
       </Form>
 

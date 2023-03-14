@@ -34,7 +34,7 @@ border: 1px solid #D5D5D5;
 border-radius: 5px;
 margin: 5px;
     `;
-export const Registrar = styled.a`
+export const Registrar = styled.div`
     
     font-family: 'Lexend Deca';
 font-style: normal;
