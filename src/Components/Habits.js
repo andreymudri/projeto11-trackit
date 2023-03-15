@@ -39,7 +39,7 @@ export default function Habits() {
     }, []);
 
     function handleButtons(id) {
-        
+
         if (dias.includes(id)) {
             setDias(dias.filter(d => d !== id))
         } else {
@@ -56,6 +56,8 @@ export default function Habits() {
                 console.log('postado');
                 navigate('/hoje');
                 setLoading(false);
+                setDias([]);
+                setNome();
             })
         response.catch(error => {
             alert(error.response.data.message)
@@ -98,19 +100,19 @@ export default function Habits() {
                     />
                     <div>
                         <Button data-test="habit-day"
-        className={dias.includes("0") ? "selected" : ""} type="button" onClick={()=> handleButtons('0')}> D</Button>
+        className={dias.includes("0") ? "selected" : ""} type="button" disabled={loading} onClick={()=> handleButtons(0)}> D</Button>
                         <Button data-test="habit-day"
-        className={dias.includes("1") ? "selected" : ""} type="button" onClick={()=> handleButtons('1')}> S</Button>
+        className={dias.includes("1") ? "selected" : ""} type="button" disabled={loading} onClick={()=> handleButtons(1)}> S</Button>
                         <Button data-test="habit-day"
-        className={dias.includes("2") ? "selected" : ""} type="button" onClick={()=> handleButtons('2')}> T</Button>
+        className={dias.includes("2") ? "selected" : ""} type="button" disabled={loading} onClick={()=> handleButtons(2)}> T</Button>
                         <Button data-test="habit-day"
-        className={dias.includes("3") ? "selected" : ""} type="button" onClick={()=> handleButtons('3')}> Q</Button>
+        className={dias.includes("3") ? "selected" : ""} type="button" disabled={loading} onClick={()=> handleButtons(3)}> Q</Button>
                         <Button data-test="habit-day"
-        className={dias.includes("4") ? "selected" : ""} type="button" onClick={()=> handleButtons('4')}> Q</Button>
+        className={dias.includes("4") ? "selected" : ""} type="button" disabled={loading} onClick={()=> handleButtons(4)}> Q</Button>
                         <Button data-test="habit-day"
-        className={dias.includes("5") ? "selected" : ""} type="button" onClick={()=> handleButtons('5')}> S</Button>
+        className={dias.includes("5") ? "selected" : ""} type="button" disabled={loading} onClick={()=> handleButtons(5)}> S</Button>
                         <Button data-test="habit-day"
-        className={dias.includes("6") ? "selected" : ""} type="button" onClick={()=> handleButtons('6')}> S</Button>
+        className={dias.includes("6") ? "selected" : ""} type="button" disabled={loading} onClick={()=> handleButtons(6)}> S</Button>
                     </div>                    
                 </form>
                 <h2><span data-test="habit-create-cancel-btn" onClick={()=>setCreatingHabit(false)}>cancelar</span> <Buttons data-test="habit-create-save-btn" onClick={()=>{handleHabit()}}>Salvar</Buttons></h2>
@@ -125,19 +127,19 @@ export default function Habits() {
                     <div key={h.key} data-test="habit-container">
                         <TituloHabito data-test="habit-name">{h.name} <img src={Trash} alt="trash" onClick={()=>deleteHabit(h.id)} data-test="habit-delete-btn"/></TituloHabito>
                         <Button data-test="habit-day"
-        className={h.days.includes(0) ? "selected" : ""} type="button" onClick={()=> handleButtons('0')}> D</Button>
+        className={h.days.includes(0) ? "selected" : ""} > D</Button>
                         <Button data-test="habit-day"
-        className={h.days.includes(1) ? "selected" : ""} type="button" onClick={()=> handleButtons('1')}> S</Button>
+        className={h.days.includes(1) ? "selected" : ""} type="button" > S</Button>
                         <Button data-test="habit-day"
-        className={h.days.includes(2) ? "selected" : ""} type="button" onClick={()=> handleButtons('2')}> T</Button>
+        className={h.days.includes(2) ? "selected" : ""} type="button" > T</Button>
                         <Button data-test="habit-day"
-        className={h.days.includes(3) ? "selected" : ""} type="button" onClick={()=> handleButtons('3')}> Q</Button>
+        className={h.days.includes(3) ? "selected" : ""} type="button" > Q</Button>
                         <Button data-test="habit-day"
-        className={h.days.includes(4) ? "selected" : ""} type="button" onClick={()=> handleButtons('4')}> Q</Button>
+        className={h.days.includes(4) ? "selected" : ""} type="button" > Q</Button>
                         <Button data-test="habit-day"
-        className={h.days.includes(5) ? "selected" : ""} type="button" onClick={()=> handleButtons('5')}> S</Button>
+        className={h.days.includes(5) ? "selected" : ""} type="button" > S</Button>
                         <Button data-test="habit-day"
-        className={h.days.includes(6) ? "selected" : ""} type="button" onClick={()=> handleButtons('6')}> S</Button> 
+        className={h.days.includes(6) ? "selected" : ""} type="button" > S</Button> 
                     </div>
             )})}
             <Footer/>
