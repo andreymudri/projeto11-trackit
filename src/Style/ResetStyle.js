@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 const ResetStyle = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
@@ -20,6 +20,7 @@ const ResetStyle = createGlobalStyle`
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+		font-family: 'Lexend Deca';
 	}
 	/* HTML5 display-role reset for older browsers */
 	article, aside, details, figcaption, figure, 
@@ -28,7 +29,6 @@ const ResetStyle = createGlobalStyle`
 	}
 	body {
 		line-height: 1;
-		background-color:black;
 	}
 	ol, ul {
 		list-style: none;
@@ -45,6 +45,10 @@ const ResetStyle = createGlobalStyle`
 		border-collapse: collapse;
 		border-spacing: 0;
 	}
-`
+	body{
+		width: 375px;
+		
+	}
+`;
 
-export default ResetStyle
+export default ResetStyle;

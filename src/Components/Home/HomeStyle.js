@@ -4,7 +4,8 @@ export const HomeStyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 68px 36px;
+    margin: 68px 0px;
+
 
 `;
 export const Form = styled.form`

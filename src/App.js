@@ -1,26 +1,33 @@
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './Components/Home/Home';
-/* import UserHistory from './Components/UserHistory';
+import Home from "./Components/Home/Home";
+import UserHistory from './Components/UserHistory';
+import Habits from './Components/Habits';
 import Today from './Components/Today';
-import Habits from './Components/Habits'; */
-import Register from './Components/Register';
-import ResetStyle from './Style/ResetStyle';
+import Register from "./Components/Home/Register";
+import ResetStyle from "./Style/ResetStyle";
+import UserContext from "./Components/UserContext";
+import HabbitContext from "./Components/HabbitContext";
+import { useState } from "react";
 
 function App() {
+  const [user, setUser] = useState({});
+  const [habbit, setHabbit] = useState({});
   return (
     <div className="App">
-      <ResetStyle/>
-    <BrowserRouter>
+      <HabbitContext.Provider value={{ habbit, setHabbit }}>
+      <UserContext.Provider value={{ user, setUser }}>
+      <BrowserRouter>
         <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cadastro" element={<Register />} />
-{/*         <Route path="/hoje" element={<Today />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/cadastro" element={<Register />} />
+          <Route path="/hoje" element={<Today />} />
         <Route path="/habitos" element={<Habits />} />
-        <Route path="/historico" element={<UserHistory />} /> */}
-
+        <Route path="/historico" element={<UserHistory />} />
         </Routes>
-    </BrowserRouter>
+        </BrowserRouter>
+        </UserContext.Provider>
+        </HabbitContext.Provider>        
+      <ResetStyle />
     </div>
   );
 }

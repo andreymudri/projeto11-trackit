@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
-import {UserContext} from '../context'
+import UserContext from '../UserContext'
 export default function Home() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')    
@@ -24,7 +24,7 @@ export default function Home() {
         const promise = axios.post(URL, body)
         promise.then(response => {
             setUser(response.data);
-            console.log(setUser);
+
             navigate("/hoje");
             setLoading(false);
         })
@@ -38,7 +38,7 @@ export default function Home() {
         <Form onSubmit={signIn}>
 
         <Input
-          type="text"
+          type="e-mail"
           placeholder="E-mail"
           name={"email"}
           value={email}
