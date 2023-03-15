@@ -3,18 +3,17 @@ import { Link } from "react-router-dom";
 import circulo from '../Assets/circulo.png'
 import {
   CircularProgressbar,
-  CircularProgressbarWithChildren,
   buildStyles
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import HabbitContext from './HabbitContext';
-import { useContext, useEffect } from "react";
+import { useContext} from "react";
 export default function Footer() {
 
-  const { habbit,setHabbit} = useContext(HabbitContext);
+  const {habbit} = useContext(HabbitContext);
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    return <Bottom>
+    return (<Bottom>
         <Options data-test="menu">
             <Link to='/habitos' data-test="habit-link"><div>Habitos</div></Link>
             
@@ -39,26 +38,31 @@ export default function Footer() {
             <Link to ='/historico' data-test="history-link"><div>Historico</div></Link>
 
         </Options>
-    </Bottom>;
-
+    </Bottom>
+)
 }
 
 const Bottom = styled.div`
   display: flex;
   position: fixed;
   bottom: 00px;
+  left:00px;
   height: 70px;
   align-items: center;
-  width: 335px;
+  width: 375px;
   justify-content: space-between;
+  margin-left:10px;
   img {
     display:flex;
     width: 70px;
-    z-index:-1;
+
     position:fixed;
     right: 50%;
   transform: translate(40%,-55%);
   }
+a{
+  text-decoration:none;
+}
 `;
 const Options = styled.div`
   display: flex;

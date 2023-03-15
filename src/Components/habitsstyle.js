@@ -7,6 +7,7 @@ export const AppStyle = styled.div`
   font-size: 17.976px;
   line-height: 22px;
   margin-top: 75px;
+  width:335px;
 
   color: #666666;
   h1 {

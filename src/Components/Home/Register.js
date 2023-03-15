@@ -21,6 +21,7 @@ export default function Register() {
       image: image,
       password: password,
     };
+    setLoading(true);
     const URL =
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
     const promise = axios.post(URL, body);

@@ -19,6 +19,7 @@ export default function Today() {
   const data = dayjs().locale("pt-br");
   const dataformat = data.format("dddd, DD/MM");
   const [loading, setLoading] = useState(false);
+  const [updateRender, setUpdateRender] = useState(false);
   const config = {
     headers: {
       Authorization: `Bearer ${user.token}`,
@@ -35,18 +36,18 @@ export default function Today() {
 
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [updateRender]);
 
-  function handleCheck(id, { done }) {
+  function handleCheck(id, done ) {
     let checkers = "uncheck";
     !done ? (checkers = "check") : (checkers = "uncheck");
-    console.log(checkers);
-    console.log(id);
     const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/${checkers}`;
     setLoading(true);
     const promise = axios.post(URL,null, config);
     promise.then((response) => {
       setLoading(false);
+      setUpdateRender(!updateRender);
+
     });
   }
   useEffect(() => {
@@ -77,16 +78,16 @@ export default function Today() {
         <Header data-test="header" image={user.image} />
       </Link>
       <p
-        onClick={() => {
-          console.log(habbit);
-        }}
-        data-test="today"
+                data-test="today"
       >
         {dataformat}
       </p>
-      {todayhabits.length === 0
-        ? "Nenhum hábito concluído ainda"
-        : `${habbit}% dos hábitos concluídos`}
+      {habbit === 0 ? (
+  "Nenhum hábito concluído ainda"
+) : (
+  <HabitosConcluidos>{`${habbit}% dos hábitos concluídos`}</HabitosConcluidos>
+)}
+
       {todayhabits.length >= 1 &&
         todayhabits.map((h) => {
           return (
@@ -94,9 +95,16 @@ export default function Today() {
               <Texto>
                
                 <p data-test="today-habit-name">{h.name}</p>
-                Sequência atual: {h.currentSequence}
+                <Textao>Sequência atual: <GreenText done={h.done}> {h.currentSequence}</GreenText></Textao>
                 <br />
-                Seu recorde: {h.highestSequence}
+                <Textao>
+                Seu recorde:
+                <Recorde
+                  done={h.done}
+                  currentSequence={h.currentSequence}
+                  highestSequence={h.highestSequence}>{h.highestSequence}
+                  </Recorde>
+                  </Textao>
               </Texto>
 
               <Botaozao
@@ -112,6 +120,25 @@ export default function Today() {
     </AppStyle>
   );
 }
+
+const HabitosConcluidos = styled.div`
+display:flex;
+color: #8FC549;
+`
+const Textao = styled.div`
+display:flex;
+`
+const Recorde = styled.div`
+display:flex;
+  color: ${(props) =>
+    props.done && props.currentSequence === props.highestSequence
+      ? "#8FC549"
+      : "#666666"};
+`
+const GreenText = styled.h4`
+    color: ${props => props.done ? "#8FC549" : "#666666"};
+
+`
 
 const HabitoDeHoje = styled.div`
   width: 340px;

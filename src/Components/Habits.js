@@ -86,7 +86,7 @@ export default function Habits() {
         <AppStyle>
             <div><Header data-test="header" image={user.image}/></div>
             <Topper><h1>Meus hábitos</h1><button onClick={() => setCreatingHabit(true)} data-test="habit-create-btn">+</button></Topper>
-            <HabitCreation visibilidade={creatingHabit}>
+            <HabitCreation visibilidade={creatingHabit} data-test="habit-create-container">
                 <form>
                 <Input
                         type="text"
@@ -122,7 +122,7 @@ export default function Habits() {
                 habitsList.map((h) => {
                 return (
                     <div key={h.key} data-test="habit-container">
-                        <TituloHabito data-test="habit-name">{h.name} <img src={Trash} alt="trash" onClick={()=>deleteHabit(h.id)}/></TituloHabito>
+                        <TituloHabito data-test="habit-name">{h.name} <img src={Trash} alt="trash" onClick={()=>deleteHabit(h.id)} data-test="habit-delete-btn"/></TituloHabito>
                         <Button data-test="habit-day"
         className={h.days.includes(0) ? "selected" : ""} type="button" onClick={()=> handleButtons('0')}> D</Button>
                         <Button data-test="habit-day"

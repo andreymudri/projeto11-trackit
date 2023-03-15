@@ -42,5 +42,5 @@ const AppSize = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width:375;
+    width:375px;
 `
