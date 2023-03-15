@@ -83,9 +83,9 @@ export default function Today() {
         {dataformat}
       </p>
       {habbit === 0 ? (
-  "Nenhum hábito concluído ainda"
+        <div data-test="today-counter">{`"Nenhum hábito concluído ainda"`}</div>
 ) : (
-  <HabitosConcluidos>{`${habbit}% dos hábitos concluídos`}</HabitosConcluidos>
+  <HabitosConcluidos data-test="today-counter">{`${habbit}% dos hábitos concluídos`}</HabitosConcluidos>
 )}
 
       {todayhabits.length >= 1 &&
@@ -95,9 +95,9 @@ export default function Today() {
               <Texto>
                
                 <p data-test="today-habit-name">{h.name}</p>
-                <Textao>Sequência atual: <GreenText done={h.done}> {h.currentSequence}</GreenText></Textao>
+                <Textao data-test="today-habit-sequence">Sequência atual: <GreenText done={h.done}> {h.currentSequence}</GreenText></Textao>
                 <br />
-                <Textao>
+                <Textao data-test="today-habit-record">
                 Seu recorde:
                 <Recorde
                   done={h.done}
@@ -111,6 +111,7 @@ export default function Today() {
                 src={h.done ? Check : Uncheck}
                 onClick={() => handleCheck(h.id, h.done)}
                 alt={h.done ? Check : Uncheck}
+                data-test="today-habit-check-btn"
               />
             </HabitoDeHoje>
           );

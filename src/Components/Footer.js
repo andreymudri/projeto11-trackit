@@ -60,7 +60,7 @@ const Bottom = styled.div`
     right: 50%;
   transform: translate(40%,-55%);
   }
-a{
+a{ color: #52B6FF;
   text-decoration:none;
 }
 `;

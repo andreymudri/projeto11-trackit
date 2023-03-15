@@ -39,6 +39,7 @@ export default function Habits() {
     }, []);
 
     function handleButtons(id) {
+        
         if (dias.includes(id)) {
             setDias(dias.filter(d => d !== id))
         } else {
