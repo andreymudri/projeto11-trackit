@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-const HabbitContext = createContext(0);
+const HabbitContext = createContext({});
 export default HabbitContext;

@@ -50,25 +50,35 @@ export default function Habits() {
     function handleHabit() {
         setLoading(true);
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
-        axios.post(URL, createhabit, config)
-            .then(() => {
+       const response = axios.post(URL, createhabit, config)
+            response.then(() => {
                 console.log('postado');
                 navigate('/hoje');
                 setLoading(false);
             })
+        response.catch(error => {
+            alert(error.response.data.message)
+            setLoading(false)})
 
             
     }
 
     function deleteHabit(id) {
+        const confirmed = window.confirm("Tem certeza que quer deletar este habito?");
         setLoading(true);
         const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`
-        axios.delete(URL, config)
-            .then(() => {
-                console.log('Deletera');
-                navigate('/hoje');
-                setLoading(false);
+        if (confirmed) {
+            const res = axios.delete(URL, config)
+                .then(() => {
+                    console.log('Deletera');
+                    navigate('/hoje');
+                    setLoading(false);
+                })
+            res.catch(error => {
+                alert(error.response.data.message)
+                setLoading(false)
             })
+        }
     }
 
 

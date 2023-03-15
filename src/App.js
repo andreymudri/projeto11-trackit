@@ -8,12 +8,14 @@ import ResetStyle from "./Style/ResetStyle";
 import UserContext from "./Components/UserContext";
 import HabbitContext from "./Components/HabbitContext";
 import { useState } from "react";
-
+import styled from "styled-components";
 function App() {
   const [user, setUser] = useState({});
   const [habbit, setHabbit] = useState({});
   return (
     <div className="App">
+      <ResetStyle />
+      <AppSize>
       <HabbitContext.Provider value={{ habbit, setHabbit }}>
       <UserContext.Provider value={{ user, setUser }}>
       <BrowserRouter>
@@ -27,9 +29,18 @@ function App() {
         </BrowserRouter>
         </UserContext.Provider>
         </HabbitContext.Provider>        
-      <ResetStyle />
+        
+        </AppSize>
     </div>
   );
 }
 
 export default App;
+
+const AppSize = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:375;
+`

@@ -12,7 +12,8 @@ import { useContext, useEffect } from "react";
 export default function Footer() {
 
   const { habbit,setHabbit} = useContext(HabbitContext);
-    useEffect(()=>{setHabbit(86)},[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     return <Bottom>
         <Options data-test="menu">
             <Link to='/habitos' data-test="habit-link"><div>Habitos</div></Link>
@@ -48,7 +49,7 @@ const Bottom = styled.div`
   bottom: 00px;
   height: 70px;
   align-items: center;
-  width: 375px;
+  width: 335px;
   justify-content: space-between;
   img {
     display:flex;
