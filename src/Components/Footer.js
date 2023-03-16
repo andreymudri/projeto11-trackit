@@ -13,15 +13,15 @@ export default function Footer() {
   const {habbit} = useContext(HabbitContext);
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    return (<Bottom>
+    return (<Bottom data-test="menu">
         <Options data-test="menu">
             <Link to='/habitos' data-test="habit-link"><div>Habitos</div></Link>
             
 
         <Link to='/hoje' data-test="today-link">
           
-<div><img src={circulo} alt="circulo" />      {habbit === 0 ? '' : <Circulo><CircularProgressbar
-        value={habbit}
+          <div><img src={circulo} alt="circulo" />      {habbit === 0 ? '' : <Circulo><CircularProgressbar
+            value={habbit}
             text={`Hoje`}
             background
             backgroundPadding={6}
