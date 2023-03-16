@@ -53,7 +53,8 @@ export default function Today() {
   useEffect(() => {
     const quantHabitos = todayhabits.length;
     const habitosFeitos = todayhabits.filter(d => d.done === true);
-    const porcentagem = quantHabitos > 0 ? (habitosFeitos.length / quantHabitos) * 100 : 0;
+    const porcentagem = (quantHabitos > 0 ? (habitosFeitos.length / quantHabitos) * 100 : 0).toFixed(2);
+    
     setHabbit(porcentagem);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todayhabits]);
@@ -85,7 +86,7 @@ export default function Today() {
       {habbit === 0 ? (
         <div data-test="today-counter">{`"Nenhum hábito concluído ainda"`}</div>
 ) : (
-  <HabitosConcluidos data-test="today-counter">{`${habbit.toFixed(2)}% dos hábitos concluídos`}</HabitosConcluidos>
+  <HabitosConcluidos data-test="today-counter">{`${habbit}% dos hábitos concluídos`}</HabitosConcluidos>
 )}
 
       {todayhabits.length >= 1 &&

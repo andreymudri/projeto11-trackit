@@ -55,14 +55,13 @@ export default function Habits() {
             response.then(() => {
                 console.log('postado');
                 setLoading(false);
+                setCreatingHabit(false);
+                setNome('');
                 setDias([]);
-                setNome();
             })
         response.catch(error => {
             alert(error.response.data.message)
-            setLoading(false)})
-
-            
+            setLoading(false)})            
     }
 
     function deleteHabit(id) {

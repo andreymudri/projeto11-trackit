@@ -13,12 +13,12 @@ export default function Footer() {
   const {habbit} = useContext(HabbitContext);
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    return (<Bottom data-test="menu">
+    return (<Bottom >
         <Options data-test="menu">
             <Link to='/habitos' data-test="habit-link"><div>Habitos</div></Link>
             
 
-        <Link to='/hoje' data-test="today-link">
+            <Link to='/hoje' data-test="today-link">
           
           <div><img src={circulo} alt="circulo" />      {habbit === 0 ? '' : <Circulo><CircularProgressbar
             value={habbit}
@@ -67,10 +67,12 @@ a{ color: #52B6FF;
 const Options = styled.div`
   display: flex;
   align-items: center;
-  width:360px;
+  width:100vw;
   justify-content: space-between;
   margin-left: 5px; 
   margin-right: 5px;
+  background-color:white;
+  height: 70px;
 `;
 const Circulo = styled.div`   
   z-index:1;
