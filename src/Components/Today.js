@@ -96,14 +96,14 @@ export default function Today() {
               <Texto>
                
                 <p data-test="today-habit-name">{h.name}</p>
-                <Textao data-test="today-habit-sequence">Sequência atual: <GreenText done={h.done}> {h.currentSequence}</GreenText></Textao>
+                <Textao data-test="today-habit-sequence">Sequência atual: <GreenText done={h.done}> {h.currentSequence} dias</GreenText></Textao>
                 <br />
                 <Textao data-test="today-habit-record">
                 Seu recorde:
                 <Recorde
                   done={h.done}
                   currentSequence={h.currentSequence}
-                  highestSequence={h.highestSequence}>{h.highestSequence}
+                  highestSequence={h.highestSequence}>{h.highestSequence} dias
                   </Recorde>
                   </Textao>
               </Texto>

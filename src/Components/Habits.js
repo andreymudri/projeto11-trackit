@@ -89,7 +89,8 @@ export default function Habits() {
             <Topper><h1>Meus hábitos</h1><button onClick={() =>  setCreatingHabit(true)} data-test="habit-create-btn">+</button></Topper>
             <HabitCreation visibilidade={creatingHabit} data-test="habit-create-container">
                 <form>
-                <Input
+                    <Input
+                        disabled={loading}
                         type="text"
                         data-test="habit-name-input"
                         placeholder="nome do hábito"
