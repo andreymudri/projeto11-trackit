@@ -85,7 +85,7 @@ export default function Today() {
       {habbit === 0 ? (
         <div data-test="today-counter">{`"Nenhum hábito concluído ainda"`}</div>
 ) : (
-  <HabitosConcluidos data-test="today-counter">{`${habbit}% dos hábitos concluídos`}</HabitosConcluidos>
+  <HabitosConcluidos data-test="today-counter">{`${habbit.toFixed(2)}% dos hábitos concluídos`}</HabitosConcluidos>
 )}
 
       {todayhabits.length >= 1 &&

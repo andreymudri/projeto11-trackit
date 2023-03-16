@@ -73,15 +73,15 @@ export const Button = styled.button`
 margin:2px;
   width: 30px;
   height: 30px;
-
-
   background: #ffffff;
   border: 1px solid #d5d5d5;
   border-radius: 5px;
+  color: #666666;
   &.selected {
     background: #cfcfcf;
     border: 1px solid #cfcfcf;
     border-radius: 5px;
+
   }
   `;
 export const Buttons = styled(Button)`
@@ -89,7 +89,7 @@ width: 84px;
 height: 35px;
 background: #52B6FF;
 border-radius: 4.63636px;
-margin-right:15px;
+margin-right:10px;
 border-width: 0px;
 
 
