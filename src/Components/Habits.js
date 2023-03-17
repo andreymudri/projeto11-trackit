@@ -33,6 +33,7 @@ export default function Habits() {
             .then(response => {
                 setHabitsList(response.data);
                 setLoading(false);
+                navigate('/habitos');
             })
             .catch(response => console.log(response));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,13 +49,12 @@ export default function Habits() {
     }
 
 
-    function handleHabit() {
+    function handleHabit(e) {
         setLoading(true);
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
-       const response = axios.post(URL, createhabit, config)
+        const response = axios.post(URL, createhabit, config)
+        response.then(()=> setLoading(false))
             response.then(() => {
-                console.log('postado');
-                setLoading(false);
                 setCreatingHabit(false);
                 setNome('');
                 setDias([]);
@@ -63,6 +63,7 @@ export default function Habits() {
             alert(error.response.data.message)
             setLoading(false)})            
     }
+      
 
     function deleteHabit(id) {
         const confirmed = window.confirm("Tem certeza que quer deletar este habito?");
@@ -72,12 +73,13 @@ export default function Habits() {
             const res = axios.delete(URL, config)
                 .then(() => {
                     console.log('Deletera');
-                    navigate('/hoje');
                     setLoading(false);
+                    navigate('/hoje')
                 })
             res.catch(error => {
                 alert(error.response.data.message)
                 setLoading(false)
+                
             })
         }
     }
@@ -114,7 +116,7 @@ export default function Habits() {
                         <Button data-test="habit-day"
         className={dias.includes(6) ? "selected" : ""} type="button" disabled={loading} onClick={()=> handleButtons(6)}> S</Button>
                     </div>
-                    <h2><span data-test="habit-create-cancel-btn" onClick={()=>setCreatingHabit(false)}>cancelar</span> <Buttons data-test="habit-create-save-btn" onClick={()=>{handleHabit()}}>Salvar</Buttons></h2>
+                    <h2><span data-test="habit-create-cancel-btn" onClick={()=>setCreatingHabit(false)} disabled={loading}>cancelar</span> <Buttons data-test="habit-create-save-btn" onClick={()=>{handleHabit()}} disabled={loading}>Salvar</Buttons></h2>
                 </form>
                 
             </HabitCreation>

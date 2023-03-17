@@ -68,11 +68,8 @@ export default function Home() {
                 
  />}</Button>
       </Form>
-
         
       <Registrar><Link to='/cadastro' data-test="signup-link" >Não tem uma conta? Cadastre-se!</Link></Registrar>
-
-
 
     </HomeStyle>
     )
